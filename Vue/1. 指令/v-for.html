@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!--
+            v-for="user in users"   遍历元素
+            v-for="user,index in users" 带索引的遍历元素
+        -->
+        <li v-for="(user,index) in users">
+           索引:{{index}} {{user.name}} ====> {{user.gender}} ====> {{user.age}}<br/>
+           对象信息:
+           <span v-for="(v,k,i) in user">
+                {{k}}:{{v}}--{{i}} ====> 
+           </span>        
+        </li>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                users:[{name:"张三", gender:"男", age:20},
+                       {name:"李四", gender:"男", age:22},
+                       {name:"王五", gender:"女", age:23},
+                       {name:"小明", gender:"男", age:25},
+                       {name:"小宏", gender:"女", age:26}]
+            }
+        })
+    </script>
+</body>
+</html>

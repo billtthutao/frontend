@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    var game = {
+        up:function(){ console.log('Original up')},
+        down:function(){ console.log('Original down')},
+        name:"MyGame"
+    }
+    var methods = {
+        up: Symbol(),
+        down: Symbol()
+    }
+
+    game[methods.up] = function(){console.log("Symbol added up")}
+    game[methods.down] = function(){console.log("Symbol added down")}
+
+    game.up();
+    game[methods.up]()
+
+</script>
+</html>

@@ -1,0 +1,287 @@
+/* 首页样式 */
+
+.top{
+    background-color: #333;
+    height: 40px;
+    font-size: 12px;
+}
+.top-nav-links, .top-nav-login, .top-nav-cart{
+    line-height: 40px;
+}
+.top-nav-links .top-nav-link{
+    float: left;
+}
+.top-nav-link .line{
+    margin: 0 10px;
+    color: #424242;
+}
+.top-nav-login{
+    float: right;
+}
+.top-nav-login .top-nav-link{
+    float: left;
+}
+.top-nav-login .top-nav-cart{
+    float: right;
+    padding: 0 10px;
+    background-color: rgb(85, 84, 84);
+}
+.top-nav-cart:hover{
+    background-color: whitesmoke;
+}
+
+.top-nav-cart:hover .top-nav-link .fa-shopping-cart{
+    color: red;
+}
+
+.top-nav-cart:hover .top-nav-link .top-nav-cart-link{
+    color: red;
+}
+
+.top-nav-link:hover a{
+    color: whitesmoke;
+}
+
+.top2{
+    height: 55px;
+    background-color: white;
+    margin: 20px auto;
+}
+
+.top2-nav-links, .top2-form{
+    line-height: 55px;
+}
+
+.top2-logo{
+    float: left;
+    background-color: #FF6700;
+
+}
+.top2-nav-links{
+    float: left;
+}
+.top2-nav-link{
+    float: left;
+    margin: 0 10px;
+    display: block;
+}
+.top2-form{
+    float: right;
+}
+.top2-nav-link a{
+    color: black;
+    font:16px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+.top2-nav-link:hover a{
+    color: orangered
+}
+
+.searchItem{
+    height: 50px;
+    margin-right: 0;
+    border: 1px solid rgb(224, 224, 224);
+    display: block;
+    float: left;
+    outline: none;
+}
+
+.top2-form .top2-search .searchItem:focus{
+    border-color: red;
+}
+
+.searchItem:focus + .fa-search{
+    border-color: red;
+}
+
+.fa-search{
+    border: 1px solid rgb(224, 224, 224);
+    padding: 18px;
+    margin-left: 0;
+    display: block;
+    float: left;
+    border-left: 0;
+}
+
+.fa-search:hover{
+    background-color: #FF6700;
+}
+
+/* .top2-nav-link:hover .goods-info{
+    display: block;
+} */
+
+.aside-nav-links .aside-nav-link a i{
+    float: right;
+    line-height: 42px;
+}
+
+.aside-nav-links{
+    height: 420px;
+    width: 234px;
+    margin: 20px auto;
+}
+
+.aside-nav-links .aside-nav-link:hover{
+    background-color: #FF6700;
+}
+
+.aside-nav-links .aside-nav-link{
+    line-height: 42px;
+    padding: 0 20px;
+}
+
+.aside-nav-links .aside-nav-link a{
+    color: white;
+    line-height: 42px;
+}
+
+.broadcast-pictures{
+    position: relative;
+}
+
+.broadcast-pictures li:nth-child(1){
+    z-index: 1;
+}
+
+.boradcast-picture{
+    position: absolute;
+}
+
+.boradcast-picture img{
+    width: 992px;
+    height: 460px;
+}
+
+.ads{
+    margin: 10px 5px;
+}
+.shortcuts{
+    width: 100%;
+    margin: 0 auto;
+    height: 170px;
+    margin-top: 10px;
+    background-color: #5f5750;
+}
+
+.shortcuts .shortcut{
+    position: relative;
+}
+
+/* 设置上边框 */
+.shortcuts .shortcut::before{
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 1px;
+    background-color: #665e57;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0 auto
+}
+
+/* 设置左边框 */
+.shortcuts .shortcut::after{
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 1px;
+    background-color: #665e57;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 0;
+}
+
+/* 设置快捷方式中的超链接 */
+.shortcuts .shortcut a{
+    display: block;
+    color: #cfccca;
+    height: 84px;
+    width: 76px;
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.shortcuts .shortcut a:hover{
+    color: #fff;
+}
+
+/* 设置图标字体 */
+.shortcuts .shortcut i{
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.shortcut{
+    float: left;
+    margin: 0px auto;
+}
+.ad{
+    float: right;
+    margin: 0 5px;
+}
+
+.ad img{
+    width: 316px;
+    height: 170px;
+}
+
+.shortcut a{
+    display: block;
+    color: #cfccca;
+    height: 84px;
+    width: 60px;
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.app .qrcode{
+    display: none;
+    background-color: white;
+    line-height: 1px;
+    width: 124px;
+    height: 148px;
+    text-align: center;
+    /* 设置绝对定位，使其不占据页面的位置 */
+    position: absolute;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.app .qrcode img{
+    width: 90px;
+    margin: 17px;
+}
+
+.app .qrcode span{
+    color: black;
+}
+
+.app:hover .qrcode{
+    display: block;
+}
+
+.goods-info{
+    /* height: 228px; */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    transition: height 0.3s;
+    z-index: 9999;
+}
+
+.top2-nav-link:hover ~ .goods-info, .goods-info:hover {
+    height: 228px;
+    border-top: 1px solid rgb(224, 224, 224);
+    box-shadow: 0 5px 3px rgba(0, 0, 0, .2);
+}

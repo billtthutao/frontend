@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(person, index) in persons" :key="index">
+                {{index}}---{{person.name}}---{{person.age}}---
+                <button @click="deletePerson(index)">删除</button>---
+                <button @click="updatePerson(index,{name:'xxx',age:30})">更新</button>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value, attr) in persons[1]" :key="attr">
+                {{attr}}:{{value}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            persons:[{name:'张三',age:18},{name:'李四',age:19},{name:'王五',age:20},{name:'Bill',age:21},]
+        },
+        methods: {
+            updatePerson(index,newP){
+                this.persons.splice(index,1,newP)
+            },
+            deletePerson(index){
+                this.persons.splice(index,1)
+            }
+        },
+    })
+</script>
+</html>

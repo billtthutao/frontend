@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组结构
+        let a = [1,2,3];
+        const [x,y,z] = a;
+        console.log(x,y,z);
+    
+        //对象结构
+        let person = {name: "billhu", age: 37, language: ["java","c","js"]};
+        const {name,age,language} = person;
+        console.log(name);
+        console.log(age);
+        console.log(language);
+
+		//从person中取出属性name，赋值给b， 取出属性age，赋值给c，取出属性language，赋值给d
+        const {name:b,age:c,language:d} = person;
+        console.log(name);
+        console.log(age);
+        console.log(language);
+        console.log(b,c,d);
+
+
+        //字符串
+        let str = "hello.vue";
+        console.log(str.startsWith("hello"));
+        console.log(str.endsWith("vue"));
+        console.log(str.includes("el"));
+        console.log(str.length);
+
+        //多行字符串
+        let str1 = `<div>
+                        <p>Hello Str</p>
+                    </div>`;
+
+        console.log(str1);
+
+        //字符串插入变量和表达式， 在字符串中插入${},里面可以放入js里面定义的字符串和表达式
+        console.log(`我是${name}，年龄是${age}`);
+
+        function fun(){return "我是一个函数"};
+        console.log(`我是${name}，年龄是${age+10}, 我想说${fun()}`);
+        
+    </script>
+</body>
+</html>

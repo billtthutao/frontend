@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>{{item1}} - price: {{item1Price}}</li><input type="number" v-model="item1Num">
+            <li>{{item2}} - price: {{item2Price}}</li><input type="number" v-model="item2Num">
+            <li>总价: {{totalPrice}}</li>
+            <li>{{msg}}</li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                item1:"西游记",
+                item1Price:10.5,
+                item1Num:0,
+                item2:"水浒传",
+                item2Price:25.5,
+                item2Num:0,
+                msg:""
+            },
+            computed:{
+                totalPrice(){ return this.item1Price*this.item1Num + this.item2Price*this.item2Num;}
+            },
+            watch:{
+                item1Num:function(newValue, oldValue){
+                    if(newValue >= 3){
+                        this.msg="超过限购数量";
+                        this.item1Num = 3;
+                    }else{
+                        this.msg="";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

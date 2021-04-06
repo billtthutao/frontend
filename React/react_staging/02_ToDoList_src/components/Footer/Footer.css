@@ -1,0 +1,8 @@
+.footer{
+    margin-top: 10px;
+}
+
+.footer > .delBtn{
+    /* margin-left: 100px; */
+    background-color: rgb(211, 48, 48);
+}

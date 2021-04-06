@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="searchTxt">
+        <ul>
+            <li v-for="(person, index) in filterPersons" :key="index">
+                {{index}}---{{person.name}}---{{person.age}}
+            </li>
+        </ul>
+        <button @click="orderType = 1">升序</button>
+        <button @click="orderType = 2">降序</button>
+        <button @click="orderType = 0">不排序</button>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            persons:[{name:'张三',age:18},{name:'李四',age:19},{name:'王五',age:20},{name:'Bill',age:21},],
+            searchTxt:'',
+            orderType: 0,
+        },
+        methods: {
+            updatePerson(index,newP){
+                this.persons.splice(index,1,newP)
+            },
+            deletePerson(index){
+                this.persons.splice(index,1)
+            }
+        },
+        computed:{
+            filterPersons(){
+                let filteredPersons =  this.persons.filter(p => p.name.indexOf(this.searchTxt) !== -1)
+                if(this.orderType === 1){
+                     filteredPersons.sort(function(p1,p2){
+                        return p1.age - p2.age
+                    })
+                }else if(this.orderType === 2){
+                     filteredPersons.sort(function(p1,p2){
+                        return p2.age - p1.age
+                    })
+                }
+
+                return filteredPersons
+            }
+        }
+    })
+</script>
+</html>

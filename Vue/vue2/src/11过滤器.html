@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>当前日期1: {{date | dateString}}</span><br>
+        <span>当前日期2: {{date | dateString('YYYY-MM-DD')}}</span><br>
+        <span>当前时间: {{date | dateString('HH:mm:ss')}}</span><br>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script src="./js/moment.js"></script>
+<!-- <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.js"></script> -->
+<script>
+    Vue.filter("dateString", function(date,format){return moment(date).format(format||'YYYY-MM-DD HH:mm:ss')})
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            date: new Date()
+        }
+    })
+</script>
+</html>

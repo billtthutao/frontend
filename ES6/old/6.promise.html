@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        //为了保证按顺序进行调用, 调用链很长的时候导致代码很多嵌套
+        $.ajax({
+            url:"mock/user.json",
+            success:function(data){
+                console.log(data);
+                $.ajax({
+                    url:"mock/user_course_"+data.id+".json",
+                    success:function(data){
+                        console.log(data);
+                        $.ajax({
+                            url:"mock/course_score_"+data.id+".json",
+                            success:function(data){
+                                console.log(data);
+                            },
+                            error:function(error){
+                                console.log("Exception:"+error)
+                            }
+                        });
+                    },
+                    error:function(error){
+                        console.log("Exception:"+error);
+                    }
+                });
+            },
+            error:function(error){
+                console.log("Exception:"+error)
+            }
+        });
+
+        //通过promise来解决嵌套地狱的问题
+        let p = new Promise((resolve,reject) => {
+            $.ajax({
+                url:"mock/user.json",
+                success:function(data){
+                    console.log(data);
+                    resolve(data);
+                },
+                error:function(error){
+                        console.log(error);
+                        reject(error);
+                    }
+            });
+        });
+
+        //只有在p里面定义的ajax调用完成后才会调用p1里面的ajax
+        let p1 = p.then(data => {
+            return new Promise((resolve,reject) => {
+                $.ajax({
+                    url:`mock/user_course_${data.id}.json`,
+                    success:function(data){
+                        console.log(data);
+                        resolve(data);   
+                    },
+                    error:function(error){
+                        console.log(error);
+                        reject(error);
+                    }
+                });
+            });
+        });
+
+        //只有在p1里面定义的ajax调用完成后才会调用p2里面的ajax
+        let p2 = p1.then(data => {
+            $.ajax({
+                    url:`mock/course_score_${data.id}.json`,
+                    success:function(data){
+                        console.log(data);  
+                    },
+                    error:function(error){
+                        console.log(error);
+                    }
+            });            
+        });
+
+        //===============进一步优化，将公共的生成Promise的代码提取成一个函数====================================================
+        function get(url,data){
+            return new Promise((resolve,reject) => {
+                $.ajax({
+                    url:url,
+                    data:data,
+                    success:function(data){
+                        resolve(data);
+                    },
+                    error:function(error){
+                        reject(error);
+                    }
+                });
+            });
+        }
+
+        //链式调用，每个调用都会在上一个调用完成后才会进行执行
+        get("mock/user.json")
+        .then(data => get(`mock/user_course_${data.id}.json`))
+        .then(data => get(`mock/course_score_${data.id}.json`))
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
+
+    </script>
+</body>
+</html>

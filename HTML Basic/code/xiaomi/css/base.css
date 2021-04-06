@@ -1,0 +1,77 @@
+/* 公共样式 */
+
+.clearfix::before,
+.clearfix::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* 去除a的下划线 */
+a{
+    text-decoration: none;
+    color: #b0b0b0;
+}
+
+body{
+    font:14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    color: #b0b0b0;
+    min-width: 1226px;
+}
+
+/* 设置一个类，用来表示中间容器的宽度 */
+.w{
+    /* 固定容器的宽度 */
+    width: 1226px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+}
+
+.w1{
+    /* 固定容器的宽度 */
+    width: 234px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+}
+
+.w2{
+    /* 固定容器的宽度 */
+    width: 992px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+}
+
+.w3{
+    /* 固定容器的宽度 */
+    width: 234px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.w4{
+    /* 固定容器的宽度 */
+    width: 992px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+}
+
+.w5{
+    /* 固定容器的宽度 */
+    width: 234px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+}
+
+.w6{
+    /* 固定容器的宽度 */
+    width: 992px;
+    /* 设置容器居中 */
+    margin: 0 auto;
+    float: left;
+}

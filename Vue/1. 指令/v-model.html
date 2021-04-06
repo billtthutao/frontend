@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" value="Java" v-model="language">Java<br>
+        <input type="checkbox" value="NodeJs" v-model="language">NodeJs<br>
+        <input type="checkbox" value="Go" v-model="language">Go<br>
+        <span>你选择的是{{language.join(",")}}</span>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                language:[]
+            }
+        })
+    </script>
+</body>
+</html>

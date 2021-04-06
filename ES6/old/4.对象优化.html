@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = {name: "billhu",age:37};
+        let fun = (person) =>{
+            console.log(Object.keys(person));
+            console.log(Object.values(person));
+            console.log(Object.entries(person));
+        }
+
+        fun(person);
+
+        //==============================
+        let target = {a:1};
+        let source1 = {b:2};
+        let source2 = {c:3};
+
+        Object.assign(target,source1,source2);
+        console.log(target);
+
+        //=========================
+        let name = "billhu";
+        let age = 37;
+
+        let myself = {name,age};
+        console.log(myself);
+
+        //=========================================
+        let person2 = {
+            name: "billhu",
+            eat: function (food){console.log(this.name+"吃"+food)},
+            eat2: food => {console.log(person2.name+"吃"+food);},   //注意这里不能用this.name，只能用object.属性
+            eat3(food){console.log(this.name+"吃"+food)}
+        }
+
+        person2.eat("香蕉");
+        person2.eat2("西瓜");
+        person2.eat3("苹果");
+
+        //=============================================
+        let source3 = {name: "jackie",age:37};
+        let target1 = source3;   //浅拷贝
+        let target2 = {...source3}; //深拷贝
+
+        source3.age = source3.age+1;
+
+        console.log(source3);
+        console.log(target1);
+        console.log(target2);
+
+        //==============================================
+        let source4 = {name:"billhu"};
+        let source5 = {age:37};
+
+        let target3 = {...source4,...source5};
+        console.log(target3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .aClass{
+        font-size: 30px;
+    }
+    .bClass{
+        color: red;
+    }
+    .cClass{
+        color: blue;
+    }
+</style>
+<body>
+    <div id="app">
+        <p class="aClass" :class="a">class属性为字符串</p>
+        <p :class="{aClass:aActive, bClass:bActive, cClass:cActive}">class属性为对象</p>
+        <p :style="{fontSize:fontSize, color:color}">style属性</p>
+        <button @click='updateClass'>Update</button>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            a: 'bClass',
+            aActive: true,
+            bActive: true,
+            cActive: false,
+            fontSize: '20px',
+            color: 'red'
+        },
+        methods: {
+            updateClass(){
+                this.a = this.a === 'cClass' ? 'bClass' : 'cClass'
+                this.aActive = !this.aActive
+                this.bActive = !this.bActive
+                this.cActive = !this.cActive
+                this.color = this.color === 'red' ? 'blue' : 'red'
+                this.fontSize = this.fontSize === '20px' ? '40px' : '20px'
+            }
+        },
+    })
+</script>
+</html>

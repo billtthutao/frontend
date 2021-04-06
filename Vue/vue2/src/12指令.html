@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+    <div id="app">
+        <span ref="tipMsg">Hello, World</span>
+        <button @click="showTips">显示tips</button>
+        <!-- 添加v-cloak，vue在完成这个元素渲染之前, 会给span加上属性v-cloak,然后通过style里面指定包含v-cloak属性的元素不显示,来避免将{{msg}}显示到页面上 -->
+        <span v-cloak>{{msg}}</span>    
+        <span v-text-upper="txt"></span>
+        <span v-text-lower="txt"></span>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    // alert("-----")
+    //自定义全局指令, 适用于所有Vue实例
+    Vue.directive('text-upper', function(el,binding){
+        // console.log(el,binding)
+        el.textContent = binding.value.toUpperCase()
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '尚硅谷',
+            txt: 'Just Do It!'
+        },
+        methods: {
+            showTips(){
+                alert(this.$refs.tipMsg.textContent)
+            }
+        },
+        directives: {  //自定义局部指令, 适用于当前Vue
+            'text-lower': function(el,binding){
+                // console.log(el,binding)
+                el.textContent = binding.value.toLowerCase()
+            }
+        }
+    })
+</script>
+</html>

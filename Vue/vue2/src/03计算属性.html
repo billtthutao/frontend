@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>姓:</span><input type="text" v-model="firstName">
+        <span>名:</span><input type="text" v-model="lastName">
+        <span>姓名:</span><input type="text" v-model="fullName">
+        <span>姓名:</span><input type="text" v-model="fullName1">
+        <span>姓名:</span><input type="text" v-model="fullName2">
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'bill',
+            lastName: 'hu',
+            fullName1: ''
+        },
+        computed:{
+            fullName(){
+                return this.firstName + ' ' + this.lastName
+            },
+            fullName2: {
+                get(){
+                    return this.firstName + ' ' + this.lastName
+                },
+                set(value){
+                    const names = value.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[1]
+                }
+            }
+        },
+        watch:{
+            firstName: function(newVal,oldVal){
+                this.fullName1 = newVal + ' ' + this.lastName
+            }
+        }
+    })
+
+    vm.$watch('lastName',function(value){this.fullName1 = this.firstName + ' ' + value})
+</script>
+</html>

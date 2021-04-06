@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+<body>
+    <div>
+        <input type="button" id="btn1" value="submit">
+    </div>
+</body>
+<script type="text/javascript">
+    $("#btn1").click(function(){
+        $.get('http://localhost:8000/',function(data){
+            console.log(data)
+        },"json")
+    })
+    console.log(fetch);
+</script>
+</html>

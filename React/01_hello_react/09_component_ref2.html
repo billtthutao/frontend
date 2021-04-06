@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./js/react.development.js" type="text/javascript"></script>
+<script src="./js/react-dom.development.js" type="text/javascript"></script>
+<script src="./js/babel.min.js" type="text/javascript"></script>
+<script src="./js/prop-types.js" type="text/javascript"></script>
+
+<body>
+    <div id="box1"></div>
+</body>
+<script type="text/babel">
+    class MyComponent extends React.Component{
+        render(){
+            return (
+                <div>
+                    <input ref={currentNode => this.input1 = currentNode} type='text' placeholder='点击按钮1提示输入数据'/>
+                    <input onClick={this.showMsg1} type='button' value='按钮1'/>
+                    <input onBlur={this.showMsg2} ref={currentNode => this.input2 = currentNode} type='text' placeholder='失去焦点提示输入数据'/>
+                </div>
+            )
+        }
+
+        showMsg1 = () => {
+            let {input1} = this;
+            alert(input1.value)
+        }
+        showMsg2 = () => {
+            let {input2} = this;
+            alert(input2.value)
+        }
+    }
+
+    ReactDOM.render(<MyComponent />,document.getElementById('box1'))
+</script>
+
+</html>

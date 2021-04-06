@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="destoryVm">销毁Vue</button>
+        <span v-show="show">我在变化</span>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            show: true
+        },
+        beforeCreate() {
+            console.log('beforeCreate()')
+        },
+        created() {
+            console.log('created()')
+        },
+        beforeMount() {
+            console.log('beforeMount()')
+        },
+        mounted(){
+            console.log('mounted()')
+            this.timmer = setInterval(()=>{
+                this.show = !this.show
+            },1000)
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate()')
+        },
+        updated() {
+            console.log('updated()')
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy()')
+            clearInterval(this.timmer)
+        },
+        destroyed() {
+            console.log('destroy()')
+        },
+        methods: {
+            destoryVm(){
+                this.$destroy()
+            }
+        },
+    })
+</script>
+</html>

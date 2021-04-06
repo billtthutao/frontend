@@ -1,0 +1,1 @@
+export const cachePageNum2 = data => ({type:'cachePageNum2',data})

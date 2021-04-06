@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item{
+            width: 50px;
+            height: 25px;
+            float: left;
+            border: 1px solid black;
+            margin: 10px;
+        }
+    </style>
+    <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
+</head>
+<body>
+    <div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    // $('.item').click(function(){
+    //     $(this).css('background','pink')
+    // })
+    var items = document.getElementsByClassName('item')
+    for(let i=0;i<items.length;i++){
+        items[i].onclick = function(){
+            items[i].style.background = 'pink';
+        }
+    }
+
+    function test(){
+        console.log(arguments)
+    }
+
+    function test1(...rArgs){
+        console.log(rArgs)
+    }
+
+    var args = ['a','b','c']
+    test('a','b','c')
+    test1('a','b','c')
+    test(args)
+    test1(args)
+    test(...args)
+    test1(...args)
+
+    
+</script>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./js/react.development.js" type="text/javascript"></script>
+<script src="./js/react-dom.development.js" type="text/javascript"></script>
+<script src="./js/babel.min.js" type="text/javascript"></script>
+<script src="./js/prop-types.js" type="text/javascript"></script>
+<body>
+    <div id="box1"></div>
+</body>
+<script type="text/babel">
+    class View extends React.Component{
+        constructor(props){
+            console.log('View---constructor')
+            super(props)
+            this.state = {color:'black'}
+        }
+
+        switchColor = () => {
+            let {color} = this.state;
+            if(color === 'black') color = 'red'
+            else if(color === 'red') color = 'yellow'
+            else if(color === 'yellow') color = 'black'
+
+            this.setState({color:color})
+        }
+
+        //组件挂载
+        componentWillMount(){
+            console.log('View---componentWillMount')
+        }
+
+        render(){
+            console.log('View---render')
+            return (
+                <div>
+                    <input onClick={this.switchColor} type='button' value='换色' />
+                    <Count color={this.state.color}/>
+                </div>
+            )
+        }
+
+        componentDidMount(){
+            console.log('View---componentDidMount')
+        }
+
+        componentWillUnmount(){
+            console.log('View---componentWillUnmount')
+        }
+
+        //组件setState
+        shouldComponentUpdate(){
+            console.log('View---shouldComponentUpdate')
+            return true;
+        }
+
+        componentWillUpdate(){
+            console.log('View---componentWillUpdate')
+        }
+
+        componentDidUpdate(){
+            console.log('View---componentDidUpdate')
+        }
+    }
+    class Count extends React.Component{
+
+        constructor(props){
+            console.log('Count---constructor')
+            super(props)
+            this.state = {count:0}
+        }
+
+        add = () => {
+            let {count} = this.state;
+            count++;
+            this.setState({count:count})
+        }
+
+        clear = () => {
+            ReactDOM.unmountComponentAtNode(document.getElementById('box1'))
+        }
+
+        force = () => {
+            this.forceUpdate()
+        }
+
+        //组件挂载
+        componentWillMount(){
+            console.log('Count---componentWillMount')
+        }
+
+        render(){
+            console.log('Count---render')
+            return (
+                <div>
+                    <h2 style={{color:this.props.color}}>当前的和为: {this.state.count}</h2>
+                    <input onClick={this.add} type='button' value='增加' />
+                    <input onClick={this.clear} type='button' value='清除' />
+                    <input onClick={this.force} type='button' value='强制更新' />
+                </div>
+            )
+        }
+
+        componentDidMount(){
+            console.log('Count---componentDidMount')
+        }
+
+        componentWillUnmount(){
+            console.log('Count---componentWillUnmount')
+        }
+
+        //组件setState
+        shouldComponentUpdate(){
+            console.log('Count---shouldComponentUpdate')
+            return true;
+        }
+
+        componentWillUpdate(){
+            console.log('Count---componentWillUpdate')
+        }
+
+        componentDidUpdate(){
+            console.log('Count---componentDidUpdate')
+        }
+
+        componentWillReceiveProps(props){
+            console.log('Count---componentWillReceiveProps',props)
+        }
+    }
+
+    ReactDOM.render(<View />,document.getElementById('box1'))
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //参数默认值
+        function fun(a,b=1){
+            return a+b;
+        }
+
+        console.log(fun(10));
+
+        //可变参数
+        function fun1(...values){
+            console.log(values);
+        }
+
+        fun1(1,2,3,4);
+
+        //箭头函数
+        let print = obj => console.log(obj);
+        print("abc");
+        let sum2 = (a,b) => a+b;
+        console.log(sum2(100,200));
+
+        let sum3 = (a,b) => {
+            let c = a + b;
+            console.log(c);
+        };
+
+        sum3(100,50);
+
+        let person = {name: "billhu",age:37};
+		//将参数中的name属性作为函数真正的参数
+        let sum4 = ({name}) => console.log(name);
+
+        sum4(person);
+
+    </script>
+</body>
+</html>

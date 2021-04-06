@@ -1,0 +1,21 @@
+@box1-width: 500px;
+@box1-heigh: 500px;
+@box1-color: #bbffaa;
+
+.box1{
+    width: @box1-width;
+    height: @box1-heigh;
+    background-color: @box1-color;
+
+    .box2{
+        width: @box1-width/2;
+        height: @box1-heigh/2;
+        background-color: #fff;
+    }
+}
+
+.box2{
+    width: @box1-width*0.6;
+    height: @box1-heigh*0.6;
+    background-color: black;
+}

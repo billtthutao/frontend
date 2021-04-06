@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>1. 事件绑定</h2>
+        <button @click="fun1">按钮1</button>
+        <button @click="fun2('hello',msg)">按钮2</button>
+        <button @click="fun3">按钮3</button>
+        <button @click="fun4(msg,$event)">按钮4</button>
+        <h2>2. 事件修饰符</h2>
+        <div id="box1" style="height: 200px; width: 200px; background-color: blue;" @click="fun5">
+            <div id="box2" style="height: 100px; width: 100px; background-color: red;" @click.stop="fun6"></div>
+        </div>
+        <a href="https://www.baidu.com" @click.prevent="fun7">链接</a>
+        <h2>3. 按键修饰符</h2>
+        <input type="text" @keyup.13="fun8"><br>
+        <input type="text" @keyup.enter="fun8">
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'myMessage'
+        },
+        methods: {
+            fun1(){
+                alert('fun1')
+            },
+            fun2(txt,msg){
+                alert(txt+'---'+msg)
+            },
+            fun3(event){
+                alert(event.target.innerHTML)
+            },
+            fun4(msg,event){
+                alert(msg+'---'+event.target.innerHTML)
+            },
+            fun5(){
+                alert('out')
+            },
+            fun6(){
+                alert('in')
+            },
+            fun7(){
+                alert('href link')
+            },
+            fun8(){
+                alert('key up')
+            },
+        },
+    })
+</script>
+</html>

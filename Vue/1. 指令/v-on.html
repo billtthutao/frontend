@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>你的点赞次数为{{num}}</span>
+        <!--事件中直接写js-->
+        <button v-on:click="num++">点赞</button>
+        <!--事件指定一个回调函数, 这个函数必须是Vue里面methods里定义的函数-->
+        <button v-on:click="cancel">取消</button>
+
+        <!--.once 促发的事件只执行一次-->
+        <div style="border: 1px solid red;padding: 20px;" v-on:click="hello">
+            <!--.stop 事件不会向父元素蔓延, @click = v-on:click-->
+            <div style="border: 1px solid blue;padding: 20px;" @click.stop="hello">
+                <!--.prevent 阻止默认行为, 这里超链接就不会跳转了-->
+                <a href="https://www.baidu.com" @click.prevent>Link</a>
+            </div>
+        </div>
+
+        <!--常用按键
+            enter
+            tab
+            delete
+            esc
+            space
+            up
+            down
+            left
+            right
+        -->
+        <input type="text" v-model="num" v-on:keyup.up="num+=2" v-on:keyup.down="num-=2">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                num:1
+            },
+            methods:{
+                cancel(){
+                    this.num--;
+                },
+                hello(){
+                    alert("你点击了")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

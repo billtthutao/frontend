@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./js/react.development.js" type="text/javascript"></script>
+<script src="./js/react-dom.development.js" type="text/javascript"></script>
+<script src="./js/babel.min.js" type="text/javascript"></script>
+<script src="./js/prop-types.js" type="text/javascript"></script>
+<body>
+    <div id="box1"></div>
+</body>
+<script type="text/babel">
+    class Life extends React.Component{
+
+        state = {opacity:1}
+
+        clear = () =>{
+            ReactDOM.unmountComponentAtNode(document.getElementById('box1'))
+        }
+
+        componentDidMount(){
+            this.timmer = setInterval(() => {
+                let opacity = this.state.opacity
+                opacity -= 0.1
+                if(opacity <= 0){
+                    opacity = 1
+                }
+                this.setState({opacity:opacity})
+            }, 200);
+        }
+
+        componentWillUnmount(){
+            clearInterval(this.timmer)
+        }
+
+        render(){
+            return (
+                <div>
+                    <h2 style={{opacity:this.state.opacity}}>我正在学些React</h2>
+                    <input onClick={this.clear} type='button' value='消失' />
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Life />,document.getElementById('box1'))
+</script>
+</html>

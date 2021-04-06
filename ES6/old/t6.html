@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    function getUser(id){
+        setTimeout(function(){
+            let data = {orderId: id+1, userInfo:`User ${id} Info`};
+            console.log(data);
+            iterator.next(data)
+        },1000)
+    }
+    function getUserOrder(id){
+        setTimeout(function(){
+            let data = {paymentId: id+1, orderInfo: `UserOrder ${id} Info`};
+            console.log(data);
+            iterator.next(data)
+        },2000)
+    }
+    function getUserOrderPayment(id){
+        setTimeout(function(){
+            let data = {paymentInfo: `UserOrderPayment ${id} Info`};
+            console.log(data);
+            iterator.next(data)
+        },3000)
+    }
+
+    function* getPayment(id){
+        let user = yield getUser(id);
+        let order = yield getUserOrder(user.orderId);
+        let payment = yield getUserOrderPayment(order.paymentId);
+    }
+
+    let iterator = getPayment(1)
+    iterator.next()
+</script>
+</html>

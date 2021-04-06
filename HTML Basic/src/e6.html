@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link href="./fa/css/all.css" rel="stylesheet">
+    <style>
+        body{
+            /* 设置字体 */
+            font:12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+        }
+
+        .basic-nav{
+            background-color: darkgray;
+            height: 30px;
+            font-size: 10px;
+        }
+
+        .basic-nav .nav{
+            width: 1000px;
+            margin: 0 auto;
+            line-height: 30px;
+        }
+
+        .basic-nav a{
+            text-decoration: none;
+            color: dimgray;
+        }
+
+        .basic-nav a:hover{
+            color: red;
+        }
+
+        .basic-nav .nav-t1{
+            float: left;
+        }
+
+        .basic-nav .nav-t2{
+            float: right;
+            margin: auto 5px;
+        }
+
+        .fa-map-marker-alt{
+            color: red;
+            margin-right: 5px;
+        }
+
+        .fa-angle-down{
+            color: dimgray;
+        }
+
+        .city-list{
+            width: 300px;
+            height: 394px;
+            border: 1px gray solid;
+            display: none;
+            position: absolute;
+            top: 29px;
+            z-index: 99;
+        }
+
+        .location:hover .city-list{
+            display: block;
+        }
+
+        .current-city:hover{
+            background-color: white;
+            border: 1px gray solid;
+            border-bottom: none;
+            border-top: none;
+        }
+
+        .current-city{
+            position: relative;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="basic-nav">
+        <ul class="nav">
+            <li class="nav-t1 location">
+                <div class="current-city">
+                <i class="fas fa-map-marker-alt"></i><a href="#">北京</a>
+                </div>
+                <div class="city-list">
+                    <a href="#">北京</a>
+                    <a href="#">上海</a>
+                    <a href="#">武汉</a>
+                </div>
+            </li>
+            <li class="nav-t2 mobile">
+                <a href="#">手机京东</a>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 GPS">
+                <a href="#">网站导航</a><i class="fas fa-angle-down"></i>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 service">
+                <a href="#">客户服务</a><i class="fas fa-angle-down"></i>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 company">
+                <a href="#">企业采购</a><i class="fas fa-angle-down"></i>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 member">
+                <a href="#">京东会员</a>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 home">
+                <a href="#">我的京东</a><i class="fas fa-angle-down"></i>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 order">
+                <a href="#">我的订单</a>
+            </li>
+            <li class="nav-t2 line">|</li>
+            <li class="nav-t2 register">
+                <a href="#">免费注册</a>
+            </li>
+            <li class="nav-t2 login">
+                <a href="#">你好, 请登录</a>
+            </li>
+        </ul>
+    </div>
+    <p>aaaaaaaaaaaaaaaaaaa</p>
+</body>
+</html>

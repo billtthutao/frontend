@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="./js/react.development.js" type="text/javascript"></script>
+<script src="./js/react-dom.development.js" type="text/javascript"></script>
+<script src="./js/babel.min.js" type="text/javascript"></script>
+<script src="./js/prop-types.js" type="text/javascript"></script>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+</body>
+<script type="text/babel">
+    class MyComponent extends React.Component {
+
+        static propTypes = {
+            name: PropTypes.string.isRequired,
+            gender: PropTypes.string,
+            age: PropTypes.number,
+            speak: PropTypes.func
+        }
+
+        static defaultProps = {
+            gender: '男',
+            age: 18,
+            speak: () => console.log("我不会说话")
+        }
+
+        render() {
+            let { name, gender, age } = this.props;
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{gender}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+    }
+
+    const p1 = { name: '张三', gender: '男', age: 18, speak: () => console.log("我会说话") }
+    const p2 = { name: '李四', gender: '女', age: 28 }
+    const p3 = { name: '王五' }
+    ReactDOM.render(<MyComponent {...p1} />, document.getElementById('box1'))
+    ReactDOM.render(<MyComponent {...p2} />, document.getElementById('box2'))
+    ReactDOM.render(<MyComponent {...p3} />, document.getElementById('box3'))
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelloReact</title>
+    <style>
+        .atGuiGu{
+            background-color: pink;
+        }
+    </style>
+</head>
+<script src="./js/react.development.js" type="text/javascript"></script>
+<script src="./js/react-dom.development.js" type="text/javascript"></script>
+<script src="./js/babel.min.js" type="text/javascript"></script>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script type="text/babel">
+    let name = 'atGuiGu'
+    let id = 'myId'
+    const VDOM = (
+        <div className={name} id={id}>
+            <h1>Hello, React1</h1>
+            <h1 style={{color:'white'}}>Hello, React2</h1>
+        </div>
+    )
+    const TDOM = document.getElementById('box1')
+    console.log("虚拟DOM",VDOM)
+    console.log("真实DOM",TDOM)
+    ReactDOM.render(VDOM,document.getElementById('box1'))
+
+    let data = ['AngularJS','React','VUE']
+    const VDOM2 = (
+        <ul>
+            {
+                data.map((item,index) => <li key={index}>{item}</li>)
+            }
+        </ul>
+    )   
+    ReactDOM.render(VDOM2,document.getElementById('box2')) 
+</script>
+</html>

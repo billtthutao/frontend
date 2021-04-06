@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    // var nums = [1,2,3,4,5,5,4,3,2,1]
+    // var set = new Set(nums)
+    // // console.log(set)
+    // for (const n of set) {
+    //     console.log(n)
+    // }
+    class Phone{
+        constructor(name,price){
+            this.name = name;
+            this.price = price;
+        }
+        call(){
+            console.log(`我可以打电话 ${this.name} ${this.price}`)
+        }
+    }
+
+    // let huawei = new Phone("荣耀",2000)
+    // huawei.call()
+
+    // class SmartPhone extends Phone{
+    //     constructor(name,price,color){
+    //         super(name,price);
+    //         this.color = color;
+    //     }
+
+    //     movie(){
+    //         console.log(`我可以看电影 ${this.color}`)
+    //     }
+    //     call(msg){
+    //         console.log(`我可以打电话 ${this.name} ${this.price} ${msg}`)
+    //     }
+    // }
+
+    // let sp = new SmartPhone("小米", 1000, "黑色")
+    // sp.call()
+    // sp.call("重写的call")
+    // sp.movie()
+
+    let obj1 = {a:1,b:2,c:3}
+    let obj2 = {a:2,b:3,d:4}
+    Object.assign(obj1,obj2)
+    console.log(obj1)
+</script>
+</html>

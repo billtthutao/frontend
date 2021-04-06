@@ -1,0 +1,16 @@
+.item > .delBtn{
+    float: right;
+    background-color: rgb(211, 48, 48);
+    display: block;
+}
+
+.item > input[type=checkbox],span{
+    float: left;
+    display: block;
+}
+
+.item::after{
+    content: '';
+    display: block;
+    clear: both;
+}

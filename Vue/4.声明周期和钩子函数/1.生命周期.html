@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+     <div id="app">
+         <span id="num">{{count}}</span>
+         <button v-on:click="add">{{name}} 点了{{count}}次</button>
+     </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                count:0,
+                name:"张三"
+            },
+            methods:{
+                show(){
+                    return this.name;
+                },
+                add(){
+                    this.count++;
+                }
+            },
+            beforeCreate() {
+                console.log("==========beforeCreate==========");
+                console.log("数据模型未加载: "+this.name,this.count);
+                console.log("方法未加载: "+this.show());
+                console.log("html模板未加载: "+document.getElementById("num"));
+            },
+            //在这个生命周期之间，进行初始化事件，进行数据的观测，可以看到在created的时候数据已经和data属性进行绑定
+            created() {
+                console.log("==========created==========");
+                console.log("数据模型已加载: "+this.name,this.count);
+                console.log("方法已加载: "+this.show());
+                console.log("html模板已加载: "+document.getElementById("num"));
+                console.log("html模板未渲染: "+document.getElementById("num").innerText);
+            },
+            //首先会判断对象是否有el选项。如果有的话就继续向下编译，如果没有el选项，则停止编译，也就意味着停止了生命周期，直到在该vue实例上调用vm.$mount(el)。
+            //然后，我们往下看，template参数选项的有无对生命周期的影响。
+            //  （1）.如果vue实例对象中有template参数选项，则将其作为模板编译成render函数。
+            //  （2）.如果没有template选项，则将外部HTML作为模板编译。
+            //  （3）.可以看到template中的模板优先级要高于outer HTML的优先级。
+            beforeMount() {
+                console.log("==========beforeMount==========");
+                console.log("html模板未渲染: "+document.getElementById("num").innerText);
+            },
+            //此时是给vue实例对象添加$el成员，并且替换掉挂在的DOM元素。因为在之前console中打印的结果可以看到beforeMount之前el上还是undefined。
+            mounted() {
+                console.log("==========mounted==========");
+                console.log("html模板已渲染: "+document.getElementById("num").innerText);
+            },
+            //当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。
+            beforeUpdate() {
+                console.log("==========beforeUpdate==========");
+                console.log("数据模板已更新: "+this.count)
+                console.log("html模板未更新: "+document.getElementById("num").innerText);
+            },
+            updated() {
+                console.log("==========updated==========");
+                console.log("数据模板已更新: "+this.count)
+                console.log("html模板已更新: "+document.getElementById("num").innerText);
+            },
+            //实例销毁之前调用
+            beforeDestroy() {
+                console.log("==========beforeDestroy==========");
+            },
+            //实例销毁之后调用
+            destroyed() {
+                console.log("==========destroyed==========");
+            }
+        })
+    </script>
+ </body>
+ </html>

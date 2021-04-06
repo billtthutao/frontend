@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/reset.css" />
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    #root {
+        width: 100%;
+        height: 100%;
+        border: 2px red solid;
+    }
+
+    .dashboard{
+        width: 100%;
+        height: 100%;
+        border: 2px green solid;
+        position:relative;
+    }
+
+    .dashboard  span{
+        color: green;
+        display: block;
+        margin: 0 auto;
+        position: absolute;bottom: 0;left: 100%;transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div id="root">
+        <div class='dashboard'>
+            <div class='t1'>
+                <span>Hello</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

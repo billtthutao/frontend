@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span v-html="link"></span><br>
+        <span v-text="link"></span><br>
+        <a :href='link2'>Go To Baidu</a><br>
+        <button @click='fun1(msg)'>Click</button>
+    </div>
+</body>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            link: '<a href="https://www.baidu.com">Bdidu Link</a>',
+            link2: 'https://www.baidu.com',
+            msg: 'Hello, World'
+        },
+        methods: {
+            fun1(msg){
+                alert(msg)
+            }
+        },
+    })
+</script>
+</html>

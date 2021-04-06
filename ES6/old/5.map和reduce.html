@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5];
+
+        let arr1 = arr.map(item => item*2);
+
+        console.log(arr1);
+
+        //=========================================
+        let result = arr.reduce((previousValue,currentValue) => {
+            console.log(previousValue);
+            console.log(currentValue);
+            return previousValue+currentValue;
+        },100);  //100是初始值
+
+        console.log(result);
+    </script>
+</body>
+</html>

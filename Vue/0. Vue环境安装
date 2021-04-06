@@ -1,0 +1,206 @@
+1. 安装nodejs
+2. 安装vue
+npm install vue
+3. 安装webpack
+npm install webpack -g
+4. 安装vue脚手架
+npm install -g @vue/cli-init
+5. 安装 vue cli
+npm i vue-cli -g
+6. 初始化项目
+c:\Users\TaoHu\Desktop>vue init webpack vue-demo
+
+? Project name vue-demo
+? Project description vue-demo
+? Author billtthutao <billtt@163.com>
+? Vue build standalone
+? Install vue-router? Yes
+? Use ESLint to lint your code? No
+? Set up unit tests No
+? Setup e2e tests with Nightwatch? No
+? Should we run `npm install` for you after the project has been created? (recommended) npm
+
+7 安装elementUI
+npm install element-ui
+在webpack项目的main.js中添加:
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
+
+
+8 vue webpack项目主页加载过程
+8.1 主页 index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+里面定义了一个id="app"的<div>, 这个页面就是初始页面，后面会通过vue进项加载
+
+8.2  vue加载页面
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+
+Vue.config.productionTip = false
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+这里定义了一个vue:
+ - 定义了el， 用来跟id="app"的页面元素绑定
+ - 定义router, 这个定义了页面路径，相当于springmvc里面的controller, 具体路由规则由import router from './router'导入
+ import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
+import Hello from '@/components/Hello'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/hello',
+      name: 'Hello',
+      component: Hello
+    }
+  ]
+ 在上面的router里面，定义了每个路径对应的页面组件， 比如 '/'对应'@/components/HelloWorld', '/hello'对应'@/components/Hello'
+ - 定义了一个名称未"APP"的组件 （components: { App },）， 这个组件由（import App from './App'）导入
+ <template>
+  <div id="app">
+    <img src="./assets/logo.png">
+    <router-link to="/">去首页</router-link>
+    <router-link to="/hello">去Hello</router-link><br/>
+    <router-view/>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+这个组件由3部分组成 <template> <script> <style>， <template>定义的是页面的元素
+
+- 最后定义了一个template，用来整体替换id="app"的元素，也就是用App这个组件来替换index.html里面的<div id="app"> ... </div>
+
+=============================================================================================================================
+安装vsc
+
+再应用商店中搜索 Vetur，点击安装，安装完成之后点击重新加载
+
+添加自定义代码片段，通过键入vue自动生成vuem模板文件
+文件 ➡ 首选项 ➡ 用户代码片段 ➡ 点击新建全局代码片段 ➡ 取名 vue ➡ 确定
+
+{
+    "Print to console": {
+        "prefix": "vue",
+        "body": [
+            "<!-- $1 -->",
+            "<template>",
+            "<div class='$2'>$5</div>",
+            "</template>",
+            "",
+            "<script>",
+            "//这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）",
+            "//例如：import 《组件名称》 from '《组件路径》';",
+            "",
+            "export default {",
+            "//import引入的组件需要注入到对象中才能使用",
+            "components: {},",
+            "data() {",
+            "//这里存放数据",
+            "return {",
+            "",
+            "};",
+            "},",
+            "//监听属性 类似于data概念",
+            "computed: {},",
+            "//监控data中的数据变化",
+            "watch: {},",
+            "//方法集合",
+            "methods: {",
+            "",
+            "},",
+            "//生命周期 - 创建完成（可以访问当前this实例）",
+            "created() {",
+            "",
+            "},",
+            "//生命周期 - 挂载完成（可以访问DOM元素）",
+            "mounted() {",
+            "",
+            "},",
+            "beforeCreate() {}, //生命周期 - 创建之前",
+            "beforeMount() {}, //生命周期 - 挂载之前",
+            "beforeUpdate() {}, //生命周期 - 更新之前",
+            "updated() {}, //生命周期 - 更新之后",
+            "beforeDestroy() {}, //生命周期 - 销毁之前",
+            "destroyed() {}, //生命周期 - 销毁完成",
+            "activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发",
+            "}",
+            "</script>",
+            "<style scoped>",
+            "//@import url($3); 引入公共css类",
+            "$4",
+            "</style>"
+        ],
+        "description": "生成vue模板"
+    },
+    "http-get请求": {
+	"prefix": "httpget",
+	"body": [
+		"this.\\$http({",
+		"url: this.\\$http.adornUrl(''),",
+		"method: 'get',",
+		"params: this.\\$http.adornParams({})",
+		"}).then(({ data }) => {",
+		"})"
+	],
+	"description": "httpGET请求"
+    },
+    "http-post请求": {
+	"prefix": "httppost",
+	"body": [
+		"this.\\$http({",
+		"url: this.\\$http.adornUrl(''),",
+		"method: 'post',",
+		"data: this.\\$http.adornData(data, false)",
+		"}).then(({ data }) => { });" 
+	],
+	"description": "httpPOST请求"
+    }
+}
+
+上面的配置中："prefix": "vue"、"prefix": "httpget"、"prefix": "httppost" 就是你的快捷输入名称，可自行修改

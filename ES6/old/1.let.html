@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        {
+            var a = 1;
+            let b = 2;   //let定义的变量是闭域的，只能在定义的{}中访问
+        }
+
+        console.log(a);
+        //console.log(b);
+
+        var c = 1;
+        var c = 2;
+        let d = 1;
+        //let d = 2;     //var定义的变量可以多次定义重复变量, 而let定义的变量只能定义一次, 第二次定义重复变量会报错
+
+        console.log(x);  //var定义的变量可以提前访问，获得的值是undefined
+        var x = 10;       
+        //console.log(y);  //let定义的变量不能提前访问
+        let y = 20;       
+
+
+        const e = 10;      //const定义只读常量
+        e = 20;            //不能更改const定义的变量的值
+    </script>
+</body>
+</html>
